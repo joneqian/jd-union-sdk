@@ -44,3 +44,6 @@ let res = await client.execute('jd.union.open.order.query', {
   }
 });
 ```
+
+## 京东联盟API文档
+https://union.jd.com/helpcenter/13246-13247-46301
