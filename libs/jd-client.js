@@ -41,8 +41,8 @@ JDClient.prototype.sign = function(params) {
 JDClient.prototype.request = function(params) {
   const { method, ...rest } = params;
   const args = {
-    timestamp: this.timestamp(),
-    v: '2.0',
+    timestamp: utils.dateFormat(new Date()),
+    v: '1.0',
     sign_method: 'md5',
     format: 'json',
     app_key: this.appKey,
@@ -55,6 +55,15 @@ JDClient.prototype.request = function(params) {
       .get(this.endpoint, args)
       .then(res => resolve(res))
       .catch(err => reject(err));
+  });
+};
+
+JDClient.prototype.execute = function(apiname, params) {
+  params.method = apiname;
+  return this.request(params).then(res => {
+    const field = `${apiname.replace(/\./g, '_')}_response`;
+    const resp = res[field];
+    return JSON.parse(resp.result);
   });
 };
 

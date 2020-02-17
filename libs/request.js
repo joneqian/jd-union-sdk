@@ -9,7 +9,6 @@ request.get = (url, data, options = {}) => {
   data = data || {};
 
   data = { params: data };
-
   const promise = new Promise((resolve, reject) =>
     axios({
       url,

@@ -31,6 +31,5 @@ function dateFormat(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
 
 module.exports = {
   md5,
-  dateFormats,
   dateFormat
 }
