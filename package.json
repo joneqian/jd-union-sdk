@@ -27,6 +27,9 @@
   },
   "homepage": "https://github.com/joneqian/jd-union-sdk#readme",
   "dependencies": {
-    "commitizen": "^4.0.3"
+    "axios": "^0.19.2",
+    "commitizen": "^4.0.3",
+    "crypto-js": "^4.0.0",
+    "qs": "^6.9.1"
   }
 }
