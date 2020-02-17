@@ -26,9 +26,21 @@ const jdsdk = require('jd-union-sdk');
 ## 初始化
 
 ```js
-let client = jdsdk({
-  accessKeyId: '<accessKeyId>',
-  accessKeySecret: '<accessSecret>',
-  regionId: 'cn-hangzhou' // regionId可以不传，默认是'cn-hangzhou'
+const client = new JDClient({
+  appKey: 'your appKey',
+  secretKey: 'your secretKey'
+});
+```
+
+## 调用
+
+```js
+let res = await client.execute('jd.union.open.order.query', {
+  orderReq: {
+    pageNo: 1,
+    pageSize: 20,
+    type: 1,
+    time: '20200217160303'
+  }
 });
 ```
