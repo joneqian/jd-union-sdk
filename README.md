@@ -20,7 +20,7 @@ npm install jd-union-sdk --save
 ## 引用依赖库
 
 ```js
-const jdsdk = require('jd-union-sdk');
+const JDClient = require('jd-union-sdk');
 ```
 
 ## 初始化
