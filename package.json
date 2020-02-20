@@ -1,6 +1,6 @@
 {
   "name": "jd-union-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "京东联盟SDK",
   "main": "index.js",
   "scripts": {

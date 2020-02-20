@@ -27,17 +27,6 @@ JDClient.prototype.sign = function(params) {
   return utils.md5(basestring).toUpperCase();
 };
 
-JDClient.prototype.sign = function(params) {
-  var sorted = Object.keys(params).sort();
-  var basestring = this.secretKey;
-  for (var i = 0, l = sorted.length; i < l; i++) {
-    var k = sorted[i];
-    basestring += k + params[k];
-  }
-  basestring += this.secretKey;
-  return utils.md5(basestring).toUpperCase();
-};
-
 JDClient.prototype.request = function(params) {
   const { method, ...rest } = params;
   const args = {
@@ -62,6 +51,13 @@ JDClient.prototype.execute = function(apiname, params) {
   params.method = apiname;
   return this.request(params).then(res => {
     const field = `${apiname.replace(/\./g, '_')}_response`;
+    if (res['error_response']) {
+      const error = res['error_response'];
+      return {
+        code: parseInt(error.code),
+        message: error.zh_desc
+      };
+    }
     const resp = res[field];
     return JSON.parse(resp.result);
   });
