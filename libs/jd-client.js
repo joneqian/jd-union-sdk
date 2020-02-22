@@ -51,6 +51,9 @@ JDClient.prototype.execute = function(apiname, params) {
   params.method = apiname;
   return this.request(params).then(res => {
     const field = `${apiname.replace(/\./g, '_')}_response`;
+    if (typeof res === 'string') {
+      res = JSON.parse(res);
+    }
     if (res['error_response']) {
       const error = res['error_response'];
       return {
