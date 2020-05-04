@@ -56,10 +56,10 @@ JDClient.prototype.execute = function(apiname, params) {
     }
     if (res['error_response']) {
       const error = res['error_response'];
-      return {
+      return Promise.reject({
         code: parseInt(error.code),
         message: error.zh_desc
-      };
+      });
     }
     const resp = res[field];
     return JSON.parse(resp.result);
